@@ -59,7 +59,7 @@ int countPairs3(int* arr, int len, int value) {
     int ind = 0;
     for (int i = 0; i < len; i++) {
         ind = value - arr[i];
-        count += binfound(&arr[i+1], len - i, x);
+        count += binfound(&arr[i+1], len - i, ind);
     }
     return count;
 }
