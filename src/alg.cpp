@@ -6,7 +6,7 @@ int countPairs1(int *arr, int len, int value) {
         int j = i + 1;
         while (j < len) {
             if ((arr[i] + arr[j]) == value) {
-                count++;
+                c++;
             }
             j++;
         }
@@ -25,7 +25,7 @@ int countPairs2(int *arr, int len, int value) {
         int j = r;
         while (j > i) {
             if (arr[j] + arr[i] == value) {
-                count++;
+                c++;
             }
             j--;
         }
@@ -66,9 +66,9 @@ int countPairs3(int *arr, int len, int value) {
     int c = 0;
     int i = 0;
     while (i < len) {
-        int num= value - arr[i];
-        count = count + binsearch(&arr[i + 1], len - i - 1, num);
+        int num = value - arr[i];
+        c = c + binsearch(&arr[i + 1], len - i - 1, num);
         i++;
     }
-    return count;
+    return c;
 }
