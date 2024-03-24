@@ -1,17 +1,4 @@
 // Copyright 2021 NNTU-CS
-int binfound(int *arr, int l, int r, int val) {
-    while (l <= r) {
-        int mid = l + (r - l) / 2;
-        if (arr[mid] == val) {
-            return mid;
-        } else if (arr[mid] < val) {
-            l = mid + 1;
-        } else {
-            r = mid - 1;
-        }
-    }
-    return -1;
-}
 int countPairs1(int *arr, int len, int value) {
     int count = 0;
     for (int i = 0; i < len-1; i++) {
@@ -40,10 +27,21 @@ int countPairs2(int *arr, int len, int value) {
 }
 
 int countPairs3(int *arr, int len, int value) {
-int count = 0;
+    int count = 0;
+    int ind = 0;
   for (int i = 0; i < len; i++) {
-    int index = binfound(arr, i + 1, len - 1, value - arr[i]);
-    if (index >= 0) {
+      while (l <= r) {
+        int mid = l + (r - l) / 2;
+        if (arr[mid] == val) {
+            ind = mid;
+        } else if (arr[mid] < val) {
+            l = mid + 1;
+        } else {
+            r = mid - 1;
+        }
+    }
+    return -1;
+    if (ind >= 0) {
       count++;
     }
   }
