@@ -5,8 +5,7 @@ int binfound(int* arr, int left, int right, int val) {
         int mid = left + (right - left) / 2;
         if (arr[mid] == val) {
             return mid;
-        }
-        else if (arr[mid] < val) {
+        }else if (arr[mid] < val) {
             left = mid + 1;
         }
         else {
@@ -16,7 +15,7 @@ int binfound(int* arr, int left, int right, int val) {
     return -1;
 }
 int countPairs1(int* arr, int len, int value) {
-    sleep(5);
+    sleep(10);
     int count = 0;
     for (int i = 0; i < len; i++) {
         for (int j = i + 1; j < len - 1; j++) {
@@ -36,8 +35,7 @@ int countPairs2(int* arr, int len, int value) {
             count++;
             l++;
             r--;
-        }
-        else if (arr[l] + arr[r] < value) {
+        }else if (arr[l] + arr[r] < value) {
             l++;
         }
         else {
