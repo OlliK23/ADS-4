@@ -1,5 +1,5 @@
 // Copyright 2021 NNTU-CS
-int binfound(int *arr, int left, int right, int val) {
+int binfound(int *arr, int l, int r, int val) {
     while (l <= r) {
         int mid = l + (r - l) / 2;
         if (arr[mid] == val) {
