@@ -24,10 +24,9 @@ int countPairs1(int *arr, int len, int value) {
   return count;
 }
 int countPairs2(int *arr, int len, int value) {
-  int count = 0;
+    int count = 0;
     int l = 0;
     int r = len - 1;
-    
     while (l < r) {
       if (arr[l] + arr[r] == value) {
         count++;
