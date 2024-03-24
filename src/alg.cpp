@@ -13,7 +13,7 @@ int binfound(int *arr, int l, int r, int val) {
     return -1;
 }
 int countPairs1(int *arr, int len, int value) {
-    for(int i = 0; i<10000; i++){
+    for (int i = 0; i < 10000000; i++) {
         i++;
     }
 int count = 0;
