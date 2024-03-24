@@ -14,11 +14,6 @@ int binfound(int *arr, int l, int r, int val) {
 }
 int countPairs1(int *arr, int len, int value) {
     int count = 0;
-    for (int i = 0; i < 10000000; i++) {
-        for (int j = i + 1; j < 100000; j++) {
-            count++;
-        }
-    }
     for (int i = 0; i < len-1; i++) {
         for (int j = i + 1; j < len; j++) {
             if (arr[i] + arr[j] == value) {
@@ -29,19 +24,17 @@ int countPairs1(int *arr, int len, int value) {
   return count;
 }
 int countPairs2(int *arr, int len, int value) {
-    int count = 0;
-    int l = 0;
-    int r = len - 1;
-    while (l < r) {
-      if (arr[l] + arr[r] == value) {
-        count++;
-        l++;
+    int c = 0;
+    int r = len-1;
+    while (arr[r] > value) {
         r--;
-      } else if (arr[l] + arr[r] < value) {
-        l++;
-      } else {
-        r--;
-      }
+    }
+    for (int i = 0; i < r; i++) {
+        for (int j = r; j > i; j--) {
+            if (arr[i] + arr[j] == value) {
+                c++;
+            }
+        }
     }
     return count;
 }
