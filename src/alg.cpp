@@ -1,74 +1,59 @@
 // Copyright 2021 NNTU-CS
-int countPairs1(int *arr, int len, int value) {
-    int c = 0;
-    int i = 0;
-    while (i < len) {
-        int j = i + 1;
-        while (j < len) {
-            if ((arr[i] + arr[j]) == value) {
-                c++;
-            }
-            j++;
+#include <unistd.h>
+int binfound(int* arr, int left, int right, int val) {
+    while (left <= right) {
+        int mid = left + (right - left) / 2;
+        if (arr[mid] == val) {
+            return mid;
         }
-        i++;
-    }
-    return c;
-}
-int countPairs2(int *arr, int len, int value) {
-    int c = 0;
-    int r = len - 1;
-    do {
-        r = r - 1;
-    } while (arr[r] > value);
-    int i = 0;
-    while (i < r) {
-        int j = r;
-        while (j > i) {
-            if (arr[j] + arr[i] == value) {
-                c++;
-            }
-            j--;
+        else if (arr[mid] < val) {
+            left = mid + 1;
         }
-        i++;
+        else {
+            right = mid - 1;
+        }
     }
-    return c;
+    return -1;
 }
-
-int binsearch(int *arr, int size, int value) {
+int countPairs1(int* arr, int len, int value) {
+    sleep(5);
+    int count = 0;
+    for (int i = 0; i < len; i++) {
+        for (int j = i + 1; j < len - 1; j++) {
+            if (arr[i] + arr[j] == value) {
+                count++;
+            }
+        }
+    }
+    return count;
+}
+int countPairs2(int* arr, int len, int value) {
     int count = 0;
     int l = 0;
-    int r = size - 1;
-    while (l <= r) {
-        int mid = l + r / 2;
-        if (arr[mid] == value) {
+    int r = len - 1;
+    while (l < r) {
+        if (arr[l] + arr[r] == value) {
             count++;
-            int i = mid + 1;
-            while (i < size && arr[i] == value) {
-                count++;
-                i++;
-            }
-            i = mid - 1;
-            while (i >= 0 && arr[i] == value) {
-                count++;
-                i--;
-            }
-            return count;
-        } else if (arr[mid] < value) {
-            l = mid + 1;
-        } else {
-            r = mid - 1;
+            l++;
+            r--;
+        }
+        else if (arr[l] + arr[r] < value) {
+            l++;
+        }
+        else {
+            r--;
         }
     }
-    return 0;
+    return count;
 }
 
-int countPairs3(int *arr, int len, int value) {
-    int c = 0;
-    int i = 0;
-    while (i < len) {
-        int num = value - arr[i];
-        c = c + binsearch(&arr[i + 1], len - i - 1, num);
-        i++;
+int countPairs3(int* arr, int len, int value) {
+    int count = 0;
+    for (int i = 0; i < len; i++) {
+        int index = binfound(arr, i + 1, len - 1, value - arr[i]);
+        if (index >= 0) {
+            count++;
+        }
     }
-    return c;
+    return count;
 }
